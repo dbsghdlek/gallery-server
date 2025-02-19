@@ -1,5 +1,5 @@
 import { User } from '../../users/domain/User.entity';
-import { Gallery } from '../../gallery/domain/entity/Gallery.entity';
+import { Gallery } from '../../gallery/infra/database/entities/Gallery.entity';
 import { JoinColumn, PrimaryColumn } from 'typeorm';
 import { Column, ManyToOne } from 'typeorm/browser';
 
