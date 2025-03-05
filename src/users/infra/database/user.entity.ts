@@ -3,18 +3,50 @@ import { GalleryLikesEntity } from '../../../galleryLikes/infra/database/gallery
 
 @Entity('user')
 export class UserEntity {
+  constructor(
+    id: number,
+    loginId: string,
+    password: string,
+    name: string,
+    createdAt: Date,
+  ) {
+    this.id = id;
+    this.loginId = loginId;
+    this.password = password;
+    this.name = name;
+    this.createdAt = createdAt;
+  }
   @PrimaryGeneratedColumn()
-  private id: number;
+  readonly id: number;
+
+  @Column({ type: 'text' })
+  readonly loginId: string;
 
   @Column()
-  private password: string;
+  readonly password: string;
 
   @Column()
-  private name: string;
+  readonly name: string;
 
   @Column()
-  private createdAt: Date;
+  readonly createdAt: Date;
 
   @OneToMany(() => UserEntity, (user) => user.likes, { onDelete: 'CASCADE' })
   likes: GalleryLikesEntity[];
+
+  get getId() {
+    return this.id;
+  }
+  get getLoginId() {
+    return this.loginId;
+  }
+  get getPassword() {
+    return this.password;
+  }
+  get getName() {
+    return this.name;
+  }
+  get getCreatedAt() {
+    return this.createdAt;
+  }
 }
