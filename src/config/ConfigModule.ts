@@ -2,7 +2,7 @@ import * as process from 'node:process';
 import * as dotenv from 'dotenv';
 import * as path from 'path';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Module } from '@nestjs/common';
+import {Global, Module} from '@nestjs/common';
 
 const envFileName: string =
   process.env.NODE_ENV === 'production'
@@ -15,6 +15,7 @@ dotenv.config({
   path: path.join(__dirname, envFileName),
 });
 
+@Global()
 @Module({
   imports: [
     TypeOrmModule.forRoot({

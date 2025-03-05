@@ -3,6 +3,19 @@ import { GalleryLike } from '../../../galleryLikes/infra/database/galleryLike.en
 
 @Entity('gallery')
 export class GalleryEntity {
+  constructor(
+    id: number,
+    mediaType: string,
+    groupName: string,
+    pictureDate: string,
+    registerDate: string,
+  ) {
+    this.id = id;
+    this.mediaType = mediaType;
+    this.groupName = groupName;
+    this.pictureDate = pictureDate;
+    this.registerDate = registerDate;
+  }
   @PrimaryGeneratedColumn()
   private id: number;
 
@@ -22,4 +35,20 @@ export class GalleryEntity {
     onDelete: 'CASCADE',
   })
   likes: GalleryLike[];
+
+  get getId() {
+    return this.id;
+  }
+  get getMediaType() {
+    return this.mediaType;
+  }
+  get getGroupName() {
+    return this.groupName;
+  }
+  get getPictureDate() {
+    return this.pictureDate;
+  }
+  get getRegisterDate() {
+    return this.registerDate;
+  }
 }

@@ -1,17 +1,24 @@
 import { GalleryRepository } from '../../../domain/repositories/gallery.repository';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Gallery } from '../entities/Gallery.entity';
 import { Repository } from 'typeorm';
+import { GalleryEntity } from '../gallery.entity';
+import GalleryMapper from '../../Gallery.mapper';
 
 @Injectable()
 export class GalleryRepositoryImpl implements GalleryRepository {
   constructor(
-    @InjectRepository(Gallery)
-    private readonly galleryRepository: Repository<Gallery>,
+    @InjectRepository(GalleryEntity)
+    private readonly galleryRepository: Repository<GalleryEntity>,
   ) {}
 
-  findAll() {
-    return this.galleryRepository.find();
+  async findAllByPaging(pageNumber: number) {
+    const galleryList = await this.galleryRepository.find({
+      take: 10,
+      skip: 10 * (pageNumber - 1),
+    });
+    return galleryList.map((g: GalleryEntity) => {
+      return GalleryMapper.fromEntity(g);
+    });
   }
 }
