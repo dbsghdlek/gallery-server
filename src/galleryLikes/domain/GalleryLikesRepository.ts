@@ -1,1 +1,2 @@
-export interface GalleryLikes {}
+export default interface GalleryLikesRepository {
+}

@@ -1,5 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { GalleryLike } from '../../../galleryLikes/infra/database/galleryLike.entity';
+import { GalleryLikesEntity } from '../../../galleryLikes/infra/database/galleryLikes.entity';
 
 @Entity('gallery')
 export class GalleryEntity {
@@ -17,24 +17,24 @@ export class GalleryEntity {
     this.registerDate = registerDate;
   }
   @PrimaryGeneratedColumn()
-  private id: number;
+  private readonly id: number;
 
   @Column({ type: 'text', nullable: false, unique: false })
-  private mediaType: string;
+  private readonly mediaType: string;
 
   @Column({ type: 'text', nullable: true, unique: false })
-  private groupName: string;
+  private readonly groupName: string;
 
   @Column({ type: 'date' })
-  private pictureDate: string;
+  private readonly pictureDate: string;
 
   @Column({ type: 'date' })
-  private registerDate: string;
+  private readonly registerDate: string;
 
   @OneToMany(() => GalleryEntity, (gallery) => gallery.likes, {
     onDelete: 'CASCADE',
   })
-  likes: GalleryLike[];
+  likes: GalleryLikesEntity[];
 
   get getId() {
     return this.id;

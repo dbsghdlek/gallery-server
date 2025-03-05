@@ -3,7 +3,7 @@ import { GalleryEntity } from '../../../gallery/infra/database/gallery.entity';
 import { UserEntity } from '../../../users/infra/database/user.entity';
 
 @Entity('galleryLikes')
-export class GalleryLike {
+export class GalleryLikesEntity {
   @PrimaryColumn()
   userId: number;
 

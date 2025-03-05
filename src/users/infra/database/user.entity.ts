@@ -1,5 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { GalleryLike } from '../../../galleryLikes/infra/database/galleryLike.entity';
+import { GalleryLikesEntity } from '../../../galleryLikes/infra/database/galleryLikes.entity';
 
 @Entity('user')
 export class UserEntity {
@@ -16,5 +16,5 @@ export class UserEntity {
   private createdAt: Date;
 
   @OneToMany(() => UserEntity, (user) => user.likes, { onDelete: 'CASCADE' })
-  likes: GalleryLike[];
+  likes: GalleryLikesEntity[];
 }

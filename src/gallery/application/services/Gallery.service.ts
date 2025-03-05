@@ -4,9 +4,9 @@ import {
   GALLERY_REPOSITORY,
 } from '../../domain/repositories/gallery.repository';
 
-export class CreateUserUseCase {
+export class GalleryService {
   constructor(
-    @Inject(GALLERY_REPOSITORY)
+    @Inject('GALLERY_REPOSITORY')
     private readonly galleryRepository: GalleryRepository,
   ) {}
 }

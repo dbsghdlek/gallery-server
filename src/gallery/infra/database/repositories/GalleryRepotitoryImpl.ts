@@ -17,8 +17,8 @@ export class GalleryRepositoryImpl implements GalleryRepository {
       take: 10,
       skip: 10 * (pageNumber - 1),
     });
-    return galleryList.map((g: GalleryEntity) => {
-      return GalleryMapper.fromEntity(g);
+    return galleryList.map((galleryEntity: GalleryEntity) => {
+      return GalleryMapper.fromEntity(galleryEntity);
     });
   }
 }
