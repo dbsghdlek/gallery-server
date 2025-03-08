@@ -5,9 +5,9 @@ import * as process from 'node:process';
 import * as path from 'node:path';
 import * as dotenv from 'dotenv';
 import { ConfigModule } from './config/ConfigModule';
-import GalleryModule from './gallery/gallery.module';
-import GalleryLikesModule from './galleryLikes/galleryLikes.module';
-import UsersModule from './users/users.module';
+import GalleryModule from './modules/gallery.module';
+import GalleryLikesModule from './modules/galleryLikes.module';
+import UsersModule from './modules/users.module';
 
 let envFileName = '../env/development.env';
 switch (process.env.NODE_ENV) {

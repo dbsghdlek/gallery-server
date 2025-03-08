@@ -2,7 +2,7 @@ import * as process from 'node:process';
 import * as dotenv from 'dotenv';
 import * as path from 'path';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import {Global, Module} from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 
 const envFileName: string =
   process.env.NODE_ENV === 'production'
@@ -25,7 +25,7 @@ dotenv.config({
       username: process.env.DATABASE_USER,
       password: process.env.DATABASE_PASSWORD,
       port: 5432,
-      entities: [__dirname + '/**/*.entities{.ts,.js}'],
+      entities: [path.join(__dirname, '..', '**', '*.entity.{ts,js}')],
       synchronize: true,
     }),
   ],
