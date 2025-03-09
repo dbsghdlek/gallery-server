@@ -6,8 +6,7 @@ import { GalleryEntity } from '../gallery.entity';
 import GalleryMapper from '../../Gallery.mapper';
 import { ImageDto } from '../../../../application/gallery/dto/Image.dto';
 import { plainToClass } from 'class-transformer';
-import * as fs from 'fs';
-import * as process from 'node:process';
+
 
 @Injectable()
 export class GalleryRepositoryImpl implements GalleryRepository {
@@ -32,13 +31,7 @@ export class GalleryRepositoryImpl implements GalleryRepository {
       skip: 10 * (pageNumber - 1),
     });
     return galleryList.map((galleryEntity: GalleryEntity) => {
-      const file = fs.readFileSync(
-        __dirname + process.env.FILE_PATH + galleryEntity.fileName,
-      );
-      return plainToClass(ImageDto, {
-        ...galleryEntity,
-        file,
-      });
+      return plainToClass(ImageDto, galleryEntity);
     });
   }
 }

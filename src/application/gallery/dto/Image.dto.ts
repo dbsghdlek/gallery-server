@@ -11,6 +11,4 @@ export class ImageDto {
   pictureDate: string;
   @Expose()
   registerDate: string;
-  @Expose()
-  imageFile: Buffer;
 }
