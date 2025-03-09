@@ -5,10 +5,11 @@ import * as process from 'node:process';
 import * as path from 'node:path';
 import * as dotenv from 'dotenv';
 import { ConfigModule } from './config/ConfigModule';
-import GalleryModule from './modules/gallery.module';
-import GalleryLikesModule from './modules/galleryLikes.module';
-import UsersModule from './modules/users.module';
+import GalleryModule from './modules/Gallery.module';
+import GalleryLikesModule from './modules/GalleryLikes.module';
+import UsersModule from './modules/Users.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
+import {CommentModule} from "./modules/Comment.module";
 
 let envFileName = '../env/development.env';
 switch (process.env.NODE_ENV) {
@@ -25,6 +26,7 @@ dotenv.config({ path: path.join(__dirname, envFileName) });
     GalleryModule,
     GalleryLikesModule,
     UsersModule,
+    CommentModule,
     ServeStaticModule.forRoot({
       rootPath: path.join(__dirname + process.env.FILE_PATH),
       serveRoot: '/resource',

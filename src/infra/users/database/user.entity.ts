@@ -8,12 +8,14 @@ export class UserEntity {
     loginId: string,
     password: string,
     name: string,
+    relation: string,
     createdAt: Date,
   ) {
     this.id = id;
     this.loginId = loginId;
     this.password = password;
     this.name = name;
+    this.relation = relation;
     this.createdAt = createdAt;
   }
   @PrimaryGeneratedColumn()
@@ -27,6 +29,9 @@ export class UserEntity {
 
   @Column()
   readonly name: string;
+
+  @Column({ type: 'text', nullable: true, unique: true })
+  readonly relation: string;
 
   @Column()
   readonly createdAt: Date;
@@ -45,6 +50,9 @@ export class UserEntity {
   }
   get getName() {
     return this.name;
+  }
+  get getRelation() {
+    return this.relation;
   }
   get getCreatedAt() {
     return this.createdAt;

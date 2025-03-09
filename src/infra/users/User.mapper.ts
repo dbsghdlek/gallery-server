@@ -8,6 +8,7 @@ export default class UserMapper {
       user.loginId,
       user.password,
       user.name,
+      user.relation,
       user.createdAt,
     );
   }
@@ -17,6 +18,7 @@ export default class UserMapper {
       entity.getLoginId,
       entity.getPassword,
       entity.getName,
+      entity.getRelation,
       entity.getCreatedAt,
     );
   }
