@@ -3,6 +3,7 @@ import * as dotenv from 'dotenv';
 import * as path from 'path';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Global, Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
 
 const envFileName: string =
   process.env.NODE_ENV === 'production'
@@ -28,6 +29,7 @@ dotenv.config({
       entities: [path.join(__dirname, '..', '**', '*.entity.{ts,js}')],
       synchronize: true,
     }),
+    MongooseModule.forRoot('mongodb://yuno:1234@localhost:27017/gallery'),
   ],
 })
 export class ConfigModule {}

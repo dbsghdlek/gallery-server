@@ -7,7 +7,6 @@ import GalleryMapper from '../../Gallery.mapper';
 import { ImageDto } from '../../../../application/gallery/dto/Image.dto';
 import { plainToClass } from 'class-transformer';
 
-
 @Injectable()
 export class GalleryRepositoryImpl implements GalleryRepository {
   constructor(

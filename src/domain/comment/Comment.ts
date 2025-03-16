@@ -1,15 +1,13 @@
-import { Document } from 'mongoose';
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Expose } from 'class-transformer';
 
-@Schema()
-export class Comment extends Document {
-  @Prop()
+export class Comment {
+  @Expose()
   readonly userName: string;
-  @Prop({ required: true })
+  @Expose()
   readonly galleryId: number;
-  @Prop()
+  @Expose()
   readonly content: string;
-  @Prop()
+  @Expose()
   readonly createdAt: Date;
 
   get getUserName() {
@@ -25,5 +23,3 @@ export class Comment extends Document {
     return this.createdAt;
   }
 }
-
-export const CommentSchema = SchemaFactory.createForClass(Comment);
