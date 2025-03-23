@@ -20,7 +20,9 @@ export class CommentRepositoryImpl implements CommentRepository {
       .exec();
 
     return commentList.map((comment) => {
-      return plainToClass(Comment, comment);
+      return plainToClass(Comment, comment, {
+        excludeExtraneousValues: true,
+      });
     });
   }
 }
